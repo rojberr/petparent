@@ -1,37 +1,52 @@
 # petparent
 
+Find hotel for your pet or look for pet ready for adoption!
 
+## Usage 💡
 
-## Build 
+...
 
-Create your python env:
-python -m venv env
+## About 💁📙
 
-Activate it:
-source env/bin/activate - Unix/macOS
-.\env\Scripts\activate - Windows
+...
 
-Check your env:
-which python - Unix/macOS
-where python - Windows
-... it should be in env directory.
+## TODO 📝
 
-Install packages with:
-python3 -m pip install -r requirements.txt - Unix/macOS
-py -m pip install requests - Windows
+List of tasks to do:
 
-To update the requirements:
-python3 -m pip freeze > requirements.txt
+- Views
+- Register
+- Add email field
+- Login
+- Home page ()   -- static only?
+- Create a post (adoption offer…)
+- Category (adoption, care)
+- Select hotel/private person
+- Description
+- Picture attachments
+- City name
+- Latitude and longitude
+- View posts
+- filter by distance
+- filter by category
+- Show point on map
+- Show list of posts
+- Allow to click on post to open post view
+- Post view
+- Show all details concerning a post
+- Email to form (button)
+- About page
+- Who we are
 
-(To deactivate / leave the virtual env:
-deactivate)
+Models
+Post: DateTimeField, author, categories (choices), [option: hotel/person], location(lat, long),
+description, [optional: imageField]
 
-More info: https://packaging.python.org/en/latest/guides/installing-using-pip-and-virtual-environments/
+## Authors 👷👷👷‍♀️
 
-## Usage
+If You have any suggestion or would like to contribute
+drop us a line at: rojberr@outlook.com
 
-
-
-## Authors
-
-
+rojberr
+Digit16
+zuzzanna
