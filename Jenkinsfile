@@ -12,7 +12,7 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'chmod +x envsetup.sh'
-                sh 'bash ./envsetup.sh'
+                sh 'sh ./envsetup.sh'
             }
         }
     }
