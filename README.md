@@ -1,6 +1,9 @@
 # petparent
 
-Find hotel for your pet or look for pet ready for adoption!
+Find hotel for your pet or look for pet ready for adoption!!
+
+![healthcheck](https://github.com/rojberr/petparent/actions/workflows/healthcheck.yml/badge.svg?branch=master)
+
 
 ![Animal readme picture](animal-readme-pic.jpg)
 
