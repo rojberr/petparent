@@ -1,4 +1,4 @@
-name: Build-and-deploy-to-AWS
+name: Build-push-to-Dockerhub-and-deploy-to-AWS
 on:
   workflow_dispatch:
     inputs:
