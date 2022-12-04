@@ -1,4 +1,4 @@
-name: Deploy-to-AWS
+name: Build-and-deploy-to-AWS
 on:
   workflow_dispatch:
     inputs:
@@ -8,25 +8,41 @@ on:
 
 jobs:
 
-  build:
+  build-push-to-images-repo:
     runs-on: ubuntu-22.04
     strategy:
       max-parallel: 4
       matrix:
         python-version: [ 3.10 ]
     steps:
-      - uses: actions/checkout@v3
-      - name: Build the Docker image
-        run: docker build . --file DOckerfile --tag petparent:$(date +%s)
+      - name: Check out the repo
+        uses: actions/checkout@v3
 
-  push-to-dockerhub:
-    steps:
-      - uses: actions/checkout@v3
-      - name: Push to Dockerhub
-        run: echo "Push"
+      - name: Build the Docker image
+        run: docker build . --file Dockerfile --tag petparent:$(date +%s)
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Extract metadata (tags, labels) for Docker
+        id: meta
+        uses: docker/metadata-action@98669ae865ea3cffbcbaa878cf57c20bbf1c6c38
+        with:
+          images: rojberr/petparent:$(date +%s)
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
+        with:
+          context: .
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
 
   deploy-to-aws:
     steps:
-    - uses: actions/checkout@v3
-    - name: Deploy Dockerhub image to AWS
-      run: echo "Deploy"
+      - uses: actions/checkout@v3
+      - name: Deploy Dockerhub image to AWS
+        run: echo "Deploy"
