@@ -1,15 +1,19 @@
 name: Deploy-to-AWS
-on: workflow_dispatch
+on:
+  workflow_dispatch:
+    inputs:
+      reason:
+        description: 'Is the version you are deploying tested and working?'
+        required: true
 
 jobs:
-  build:
 
+  build:
     runs-on: ubuntu-22.04
     strategy:
       max-parallel: 4
       matrix:
         python-version: [ 3.10 ]
-
     steps:
       - uses: actions/checkout@v3
       - name: Build the Docker image
