@@ -31,7 +31,7 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           push: true
-          tags: rojberr/petparent:$(date +%s)
+          tags: rojberr/petparent:latest
 
   deploy-to-aws:
     needs: build-push-to-images-repo
