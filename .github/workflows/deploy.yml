@@ -1,0 +1,28 @@
+name: Deploy-to-AWS
+on: workflow_dispatch
+
+jobs:
+  build:
+
+    runs-on: ubuntu-22.04
+    strategy:
+      max-parallel: 4
+      matrix:
+        python-version: [ 3.10 ]
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Build the Docker image
+        run: docker build . --file DOckerfile --tag petparent:$(date +%s)
+
+  push-to-dockerhub:
+    steps:
+      - uses: actions/checkout@v3
+      - name: Push to Dockerhub
+        run: echo "Push"
+
+  deploy-to-aws:
+    steps:
+    - uses: actions/checkout@v3
+    - name: Deploy Dockerhub image to AWS
+      run: echo "Deploy"
