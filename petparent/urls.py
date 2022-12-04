@@ -15,10 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.views import debug
 
 from petparent import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('healthcheck/', views.healthcheck),
+    path('', debug.default_urlconf),
 ]
