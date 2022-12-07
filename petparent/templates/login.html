@@ -1,0 +1,217 @@
+{% load static %}
+<!DOCTYPE html>
+
+
+<html lang="en">
+<head>
+
+    <!-- Title -->
+    <title>Log In - Trainerhub</title>
+
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Responsive multipurpose trainer dashboard HTML website">
+    <meta name="keywords" content="HTML5, CSS3, Trainer, Responsive, Multipurpose, Sport"/>
+    <meta name="author" content="drzymala.dev">
+
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Favicon (http://www.favicon-generator.org/) -->
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+    <!-- Google fonts (https://www.google.com/fonts) -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700,800" rel="stylesheet">
+    <!-- Global font -->
+
+    <!-- Bootstrap 3 CSS (https://getbootstrap.com/docs/3.3/) -->
+    <link rel="stylesheet" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
+
+    <!-- Libs and Plugins CSS -->
+    <link rel=" stylesheet
+    " href="{% static 'vendor/animsition/css/animsition.min.css' %}">
+    <!-- Animsition CSS (http://git.blivesta.com/animsition/) -->
+    <link rel="stylesheet" href="{% static 'vendor/fontawesome/css/fontawesome-all.min.css' %}">
+    <!-- Font Icons CSS (https://fontawesome.com) Free version! -->
+    <link rel=" stylesheet
+    " href="{% static 'vendor/linearicons/style.css ' %}"><!-- Linearicons CSS (https://linearicons.com) -->
+    <link rel="stylesheet" href="{% static 'vendor/owl-carousel/css/owl.carousel.min.css' %}">
+    <!-- Owl Carousel CSS (http://www.owlcarousel.owlgraphic.com) -->
+    <link rel=" stylesheet
+    " href="{% static 'vendor/owl-carousel/css/owl.theme.default.min.css' %}">
+    <!-- Owl Carousel CSS (http://www.owlcarousel.owlgraphic.com) -->
+    <link rel="stylesheet" href="{% static 'vendor/animate.css' %}">
+    <!-- Animate CSS (https://daneden.github.io/animate.css/) -->
+    <link rel=" stylesheet
+    " href="{% static 'vendor/ytplayer/css/jquery.mb.YTPlayer.min.css' %}">
+    <!-- YTPlayer CSS (more info: https://github.com/pupunzi/jquery.mb.YTPlayer) -->
+    <link rel="stylesheet" href="{% static 'vendor/lightgallery/css/lightgallery.min.css' %}">
+    <!-- lightGallery CSS (http://sachinchoolur.github.io/lightGallery) -->
+
+    <!-- Theme master CSS -->
+    <link rel=" stylesheet
+    " type='text/css' href="{% static 'css/helper.css' %}">
+    <link rel="stylesheet" type='text/css' href="{% static 'css/theme.css' %}">
+
+</head>
+
+
+<!-- ===========
+///// Body /////
+================
+* Use class " animsition
+    " to enable page transition while page loads.
+    * Use class "tt-boxed" to enable page boxed layout globally (affects all elements containing class "tt-wrap").
+    -->
+<body id="body" class="animsition tt-boxed">
+
+{% include 'blocks/header.html' %}
+
+
+<!-- *************************************
+*********** Begin body content ***********
+************************************** -->
+<div id="body-content">
+
+
+    <!-- ==========================
+    ///// Begin login section /////
+    =========================== -->
+    <section id="login-section">
+        <div class="login-section-inner tt-wrap max-width-1000">
+            <div class="row">
+
+                <!-- Left column -->
+                <div class="col-sm-6 margin-bottom-30">
+
+                    <!-- Begin login box
+                    ===================== -->
+                    <div class="login-box">
+                        <div class="login-box-inner">
+
+                            <!-- Begin login box content -->
+                            <div class="login-box-content">
+                                <h3><i class="fas fa-unlock-alt"></i> Log In</h3>
+
+                                <!-- Begin login form -->
+                                <form id="login-form">
+                                    <div class="form-group">
+                                        <label for="username">Username or Email Address:</label>
+                                        <input type="text" class="form-control" id="username" name="username"
+                                               placeholder="Enter your username" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="password">Password:</label>
+                                        <input type="password" class="form-control" id="password" name="password"
+                                               placeholder="Enter your password" required>
+                                    </div>
+
+                                    <div class="checkbox-styled form-group no-margin-bottom">
+                                        <label>
+                                            <input name="rememberme" type="checkbox" id="rememberme" value="forever">
+                                            <span class="box"></span> Remember Me
+                                        </label>
+                                    </div>
+
+                                    <div><a href="page-lost-password-1.html" class="login-box-link margin-top-15">Lost
+                                        your password?</a></div>
+                                    <button type="submit" class="btn btn-primary btn-block margin-top-25">Log In
+                                    </button>
+                                </form>
+                                <!-- End login form -->
+
+                                <!-- Begin login with social -->
+                                <div class="login-with-social">
+                                    <a href="#" class="btn btn-social btn-facebook btn-block">
+                                        <span class="btn-social-icon"><i class="fab fa-facebook-f"></i></span> Log in
+                                        with Facebook
+                                    </a>
+                                    <a href="#" class="btn btn-social btn-twitter btn-block margin-top-10">
+                                        <span class="btn-social-icon"><i class="fab fa-twitter"></i></span> Log in with
+                                        Twitter
+                                    </a>
+                                </div>
+                                <!-- End login with social -->
+
+                            </div>
+                            <!-- End login box content -->
+
+                        </div> <!-- /.login-box-inner -->
+
+                    </div>
+                    <!-- End login box -->
+
+                </div> <!-- /.col -->
+
+                <!-- Right column -->
+                <div class="col-sm-6">
+
+                    <!-- Begin register box
+                    ======================== -->
+                    <div class="register-box">
+                        <div class="register-box-inner">
+
+                            <!-- Begin register box content -->
+                            <div class="register-box-content">
+                                <h3><i class="fas fa-plug"></i> Don't have an account yet?</h3>
+                                <p class="margin-top-15">Donec et mauris tempus, interdum est ut, finibus nulla.
+                                    Suspendisse potenti. Nulla elementum ultricies massa vitae faucibus. Nullam blandit
+                                    lorem vel ligula pharetra vehicula. Quisque nec sollicitudin ipsum. Vestibulum
+                                    bibendum tortor ante, nec eleifend est varius vitae. Mauris enim massa, maximus ac
+                                    diam eget, convallis molestie risus. Vivamus bibendum duisets.</p>
+
+                                <!-- Begin register form -->
+                                <form id="register-form">
+                                    <div class="form-group margin-top-20">
+                                        <label for="username-2">Choose your username:</label>
+                                        <input type="text" class="form-control" id="username-2" name="username"
+                                               placeholder="Choose your username" required>
+                                    </div>
+                                    <div class="form-group margin-top-20">
+                                        <label for="password-2">Choose your password and continue:</label>
+                                        <input type="password" class="form-control" id="password-2" name="password"
+                                               placeholder="Choose your password" required>
+                                    </div>
+                                    <a href="page-register-1.html" type="submit" class="btn btn-primary margin-top-15">Continue
+                                        Registration</a>
+                                </form>
+                                <!-- End register form -->
+
+                            </div>
+                            <!-- End register box content -->
+
+                        </div> <!-- /.register-box-inner -->
+                    </div>
+                    <!-- End register box -->
+
+                </div> <!-- /.col -->
+            </div> <!-- /.row -->
+        </div> <!-- /.login-section-inner -->
+    </section>
+    <!-- End login section -->
+
+    {% include 'blocks/footer.html' %}
+
+</div>
+<!-- End body content -->
+
+
+{% include 'blocks/js-scripts.html' %}
+
+<!--==============================
+///// Begin Google Analytics /////
+============================== -->
+
+<!-- Paste your Google Analytics code here.
+Go to http://www.google.com/analytics/ for more information. -->
+
+<!--==============================
+///// End Google Analytics /////
+============================== -->
+
+
+</body>
+
+</html>

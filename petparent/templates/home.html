@@ -1,0 +1,198 @@
+{% load static %}
+<!DOCTYPE html>
+
+
+<html lang="en">
+<head>
+    <!-- Title -->
+    <title>Home - Trainerhub</title>
+
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Responsive multipurpose trainer dashboard HTML website">
+    <meta name="keywords" content="HTML5, CSS3, Trainer, Responsive, Multipurpose, Sport"/>
+    <meta name="author" content="drzymala.dev">
+
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Favicon (http://www.favicon-generator.org/) -->
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+    <!-- Google fonts (https://www.google.com/fonts) -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700,800" rel="stylesheet">
+    <!-- Global font -->
+
+    <!-- Bootstrap 3 CSS (https://getbootstrap.com/docs/3.3/) -->
+    <link rel="stylesheet" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
+
+    <!-- Libs and Plugins CSS -->
+    <link rel="stylesheet" href="{% static 'vendor/animsition/css/animsition.min.css' %}">
+    <!-- Animsition CSS (http://git.blivesta.com/animsition/) -->
+    <link rel="stylesheet" href="{% static 'vendor/fontawesome/css/fontawesome-all.min.css' %}">
+    <!-- Font Icons CSS (https://fontawesome.com) Free version! -->
+    <link rel="stylesheet" href="{% static 'vendor/linearicons/style.css' %}">
+    <!-- Linearicons CSS (https://linearicons.com) -->
+    <link rel="stylesheet" href="{% static 'vendor/owl-carousel/css/owl.carousel.min.css' %}">
+    <!-- Owl Carousel CSS (http://www.owlcarousel.owlgraphic.com) -->
+    <link rel="stylesheet" href="{% static 'vendor/owl-carousel/css/owl.theme.default.min.css' %}">
+    <!-- Owl Carousel CSS (http://www.owlcarousel.owlgraphic.com) -->
+    <link rel="stylesheet" href="{% static 'vendor/animate.css' %}">
+    <!-- Animate CSS (https://daneden.github.io/animate.css/) -->
+    <link rel="stylesheet" href="{% static 'vendor/ytplayer/css/jquery.mb.YTPlayer.min.css' %}">
+    <!-- YTPlayer CSS (more info: https://github.com/pupunzi/jquery.mb.YTPlayer) -->
+    <link rel="stylesheet" href="{% static 'vendor/lightgallery/css/lightgallery.min.css' %}">
+    <!-- lightGallery CSS (http://sachinchoolur.github.io/lightGallery) -->
+
+    <!-- Theme master CSS -->
+    <link rel="stylesheet" type='text/css' href="{% static 'css/helper.css' %}">
+    <link rel="stylesheet" type='text/css' href="{% static 'css/theme.css' %}">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+
+<!-- ===========
+///// Body /////
+================
+* Use class "animsition" to enable page transition while page loads.
+* Use class "tt-boxed" to enable page boxed layout globally (affects all elements containing class "tt-wrap").
+-->
+<body id="body" class="animsition tt-boxed">
+
+<table class="table">
+    <tr>
+        <th>AAA</th>
+    </tr>
+    {% for athlete in athletes %}
+        <tr>
+            <td>{{ athlete.login }}</td>
+        </tr>
+    {% endfor %}
+
+</table>
+
+{% include 'blocks/transparentheader.html' %}
+
+<!-- *************************************
+*********** Begin body content ***********
+************************************** -->
+<div id="body-content">
+
+
+    <!-- ==========================
+    ///// Begin intro section /////
+    ===============================
+    * Use classes "intro-xs", "intro-sm", "intro-lg" "intro-xlg" or "intro-full" to set intro size.
+    * Use class "intro-full-m" to set intro size for small screens only.
+    -->
+    <section id="tt-intro" class="intro-full">
+        <div class="tt-intro-inner">
+            <!-- add/remove class "tt-wrap" to enable/disable element boxed layout (class "tt-boxed" is required in <body> tag!). Note: additionally you can use prepared helper class "max-width-*" to add custom width to "tt-wrap". Example: "max-width-1500" (class "tt-wrap" is still required!). More info about helper classes in file "helper.css" -->
+
+            <!-- Begin YTPlayer (Youtube video background)
+            =======================================================
+            * NOTE: Replace videoURL with your own (videoURL:'your-youtube-video-URL').
+            * Do not forget to add your background image for mobile devices (because the video background doesn't work on mobile devices).
+            * YTPlayer may not work in the local computer. It works properly only if used under a web server.
+            * Read more info about YTPlayer: https://github.com/pupunzi/jquery.mb.YTPlayer
+            -->
+            <div class="youtube-bg-wrap parallax-6 bg-dark"> <!-- Class "parallax-6" is for tt-intro only!!! -->
+                <div class="youtube-bg"
+                     style="background-image: url({% static 'img/video-bg/video-bg-2.jpg' %}); background-position: 50% 50%;"
+                     data-property="{
+							videoURL: 'https://www.youtube.com/watch?v=Htg9O7zun50',
+							containment: 'self',
+							quality: 'default',
+							startAt: 0,
+							stopAt: 0,
+							autoPlay: true,
+							loop: true,
+							mute: true,
+							showControls: false,
+							showYTLogo: false,
+							realfullscreen: true,
+							addRaster: false,
+							optimizeDisplay: true,
+							stopMovieOnBlur: true
+						}">
+
+                    <!-- Element cover
+                    ===================
+                    * Use class "cover-opacity-*" to set cover opasity (1, 1.5, 2, 2.5, ... 9.5). Example: "cover-opacity-2" or "cover-opacity-2-5".
+                    * Aditional color classes you can use: "cover-color", "cover-light", "cover-red", "cover-pink", "cover-purple", "cover-green", "cover-blue", "cover-yellow" or "cover-brown" to set cover background color (note: class "cover-color" = template main color).
+                    * Use class "cover-gradient-dark", "cover-gradient-light" or "cover-gradient-color" to enable cover gradient background.
+                    -->
+                    <div class="cover cover-opacity-6"></div>
+
+                </div> <!-- /.youtube-bg -->
+            </div>
+            <!-- End YTPlayer -->
+
+            <!-- Begin intro caption
+            =========================
+            * Position classes: "top-left", "top-center", "top-right", "center-left", "center", "center-right", "bottom-left", "bottom-center", "bottom-right".
+            * Size classes: "intro-caption-xs", "intro-caption-sm", "intro-caption-lg", "intro-caption-xlg", "intro-caption-xxlg".
+            * Use class "parallax-1" up to "parallax-6" to enable parallax effect (no effect on mobile devices!).
+            * Use class "fade-out-scroll-1" up to "fade-out-scroll-6" to enable fade out effect if page scrolls (no effect on mobile devices!).
+            -->
+            <div class="intro-caption-wrap caption-animate intro-caption-lg bottom-left parallax-4">
+                <div class="intro-caption-holder">
+                    <div class="intro-caption center">
+                        <h1 class="intro-title">What Are You<br>Waiting For?</h1>
+                        <h2 class="intro-subtitle">Build your beautiful portfolio website today!</h2>
+
+                        <!-- Begin intro description (recommended max 170 characters!)
+                        ============================= -->
+                        <div class="intro-description">
+                            Aivo – is a complete HTML5 and CSS3 website template. It fits perfectly for freelancers,
+                            artists and design agencies. It looks great with all types of devices.
+                        </div>
+                        <!-- End intro-description -->
+
+                        <!-- Begin intro buttons -->
+                        <div class="intro-buttons">
+                            <a href="drzymala.dev" class="btn btn-primary margin-top-5 margin-right-10" target="_blank">See
+                                It Now!</a>
+                            <a href="" class="btn btn-white-bordered margin-top-5">Discover More</a>
+                        </div>
+                        <!-- End intro buttons -->
+
+                    </div> <!-- /.intro-caption -->
+                </div> <!-- /.intro-caption-holder -->
+            </div>
+            <!-- End intro caption wrap -->
+
+        </div> <!-- /.tt-intro-inner -->
+    </section>
+    <!-- End intro section -->
+
+    {% include 'blocks/footer.html' %}
+
+</div>
+<!-- End body content -->
+
+{% include 'blocks/js-scripts.html' %}
+
+<!--==============================
+///// Begin Google Analytics /////
+============================== -->
+
+<!-- Paste your Google Analytics code here.
+Go to http://www.google.com/analytics/ for more information. -->
+
+<!--==============================
+///// End Google Analytics /////
+============================== -->
+
+</body>
+</html>
