@@ -20,4 +20,5 @@ def registerPage(request):
 
 
 def lostPasswordPage(request):
+    # This is a lost password view
     return render(request, 'lostpassword.html')
