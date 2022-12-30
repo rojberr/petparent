@@ -38,25 +38,17 @@
     <!-- ==========================
     ///// Begin intro section /////
     ===============================
-    * Use classes "intro-xs", "intro-sm", "intro-lg" "intro-xlg" or "intro-full" to set intro size.
-    * Use class "intro-full-m" to set intro size for small screens only.
     -->
     <section id="tt-intro" class="intro-full">
         <div class="tt-intro-inner">
             <!-- add/remove class "tt-wrap" to enable/disable element boxed layout (class "tt-boxed" is required in <body> tag!). Note: additionally you can use prepared helper class "max-width-*" to add custom width to "tt-wrap". Example: "max-width-1500" (class "tt-wrap" is still required!). More info about helper classes in file "helper.css" -->
 
-            <!-- Begin YTPlayer (Youtube video background)
-            =======================================================
-            * NOTE: Replace videoURL with your own (videoURL:'your-youtube-video-URL').
-            * Do not forget to add your background image for mobile devices (because the video background doesn't work on mobile devices).
-            * YTPlayer may not work in the local computer. It works properly only if used under a web server.
-            * Read more info about YTPlayer: https://github.com/pupunzi/jquery.mb.YTPlayer
-            -->
+            <!-- Begin YTPlayer (Youtube video background) -->
             <div class="youtube-bg-wrap parallax-6 bg-dark"> <!-- Class "parallax-6" is for tt-intro only!!! -->
                 <div class="youtube-bg"
                      style="background-image: url({% static 'img/video-bg/video-bg-2.jpg' %}); background-position: 50% 50%;"
                      data-property="{
-							videoURL: 'https://www.youtube.com/watch?v=Htg9O7zun50',
+							videoURL: 'https://www.youtube.com/watch?v=DUhbsXnoshU',
 							containment: 'self',
 							quality: 'default',
 							startAt: 0,
@@ -127,6 +119,9 @@
 </div>
 <!-- End body content -->
 
+<!-- ====================
+///// Scripts below /////
+===================== -->
 {% include 'blocks/js-scripts.html' %}
 
 <!--==============================
