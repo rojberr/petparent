@@ -182,9 +182,15 @@
                 <!-- End mobile menu toggle button -->
 
                 <!-- Begin header attributes button (disabled on smaller screens!) -->
-                <li class="hide-from-md">
-                    <a href="https://drzymala.dev" class="h-attr-button" target="_blank">Go<span class="hide-from-lg"> To My Website</span>!</a>
-                </li>
+                    <li class="hide-from-md">
+                        {% if request.user.is_authenticated %}
+                            <a href="{% url 'logout' %}" class="h-attr-button"> <span
+                                    class="hide-from-lg">Logout {{ request.user }}</span>!</a>
+                        {% else %}
+                            <a href="{% url 'login' %}" class="h-attr-button"><span
+                                    class="hide-from-lg">Login</span>!</a>
+                        {% endif %}
+                    </li>
                 <!-- End header attributes button -->
             </ul>
         </div>
