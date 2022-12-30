@@ -10,8 +10,8 @@
     <!-- Meta -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="Responsive multipurpose trainer dashboard portal HTML website">
-    <meta name="keywords" content="HTML5, CSS3, Trainer, Responsive, Multipurpose, Sport"/>
+    <meta name="description" content="Responsive multipurpose pet hotel care adopt portal HTML website">
+    <meta name="keywords" content="HTML5, CSS3, Petparent, Responsive, Multipurpose, Pets"/>
     <meta name="author" content="drzymala.dev">
 
     {% include 'blocks/header-imports.html' %}
@@ -22,8 +22,6 @@
 <!-- ===========
 ///// Body /////
 ================
-* Use class "animsition" to enable page transition while page loads.
-* Use class "tt-boxed" to enable page boxed layout globally (affects all elements containing class "tt-wrap").
 -->
 <body id="body" class="animsition tt-boxed">
 
@@ -41,7 +39,6 @@
     -->
     <section id="tt-intro" class="intro-full">
         <div class="tt-intro-inner">
-            <!-- add/remove class "tt-wrap" to enable/disable element boxed layout (class "tt-boxed" is required in <body> tag!). Note: additionally you can use prepared helper class "max-width-*" to add custom width to "tt-wrap". Example: "max-width-1500" (class "tt-wrap" is still required!). More info about helper classes in file "helper.css" -->
 
             <!-- Begin YTPlayer (Youtube video background) -->
             <div class="youtube-bg-wrap parallax-6 bg-dark"> <!-- Class "parallax-6" is for tt-intro only!!! -->
@@ -66,11 +63,8 @@
 
                     <!-- Element cover
                     ===================
-                    * Use class "cover-opacity-*" to set cover opasity (1, 1.5, 2, 2.5, ... 9.5). Example: "cover-opacity-2" or "cover-opacity-2-5".
-                    * Aditional color classes you can use: "cover-color", "cover-light", "cover-red", "cover-pink", "cover-purple", "cover-green", "cover-blue", "cover-yellow" or "cover-brown" to set cover background color (note: class "cover-color" = template main color).
-                    * Use class "cover-gradient-dark", "cover-gradient-light" or "cover-gradient-color" to enable cover gradient background.
                     -->
-                    <div class="cover cover-opacity-6"></div>
+                    <div class="cover cover-opacity-6 cover-gradient-color"></div>
 
                 </div> <!-- /.youtube-bg -->
             </div>
@@ -78,21 +72,18 @@
 
             <!-- Begin intro caption
             =========================
-            * Position classes: "top-left", "top-center", "top-right", "center-left", "center", "center-right", "bottom-left", "bottom-center", "bottom-right".
-            * Size classes: "intro-caption-xs", "intro-caption-sm", "intro-caption-lg", "intro-caption-xlg", "intro-caption-xxlg".
-            * Use class "parallax-1" up to "parallax-6" to enable parallax effect (no effect on mobile devices!).
-            * Use class "fade-out-scroll-1" up to "fade-out-scroll-6" to enable fade out effect if page scrolls (no effect on mobile devices!).
             -->
             <div class="intro-caption-wrap caption-animate intro-caption-lg bottom-left parallax-4">
                 <div class="intro-caption-holder">
                     <div class="intro-caption center">
                         <h1 class="intro-title">What Are You<br>Waiting For?</h1>
-                        <h2 class="intro-subtitle">Join us and profit from or offer best animal care ever!</h2>
+                        <h2 class="intro-subtitle">Join us and profit from or offer the best animal care ever!</h2>
 
-                        <!-- Begin intro description (recommended max 170 characters!)
+                        <!-- Begin intro description
                         ============================= -->
                         <div class="intro-description">
-                            PetParent – is a complete pet care portal. It fits perfectly for people searching for pet care,
+                            PetParent – is a complete pet care portal. It fits perfectly for people searching for pet
+                            care,
                             people willing to offer one and pet hotels. Your pet will be amazed!
                         </div>
                         <!-- End intro-description -->
@@ -123,17 +114,6 @@
 ///// Scripts below /////
 ===================== -->
 {% include 'blocks/js-scripts.html' %}
-
-<!--==============================
-///// Begin Google Analytics /////
-============================== -->
-
-<!-- Paste your Google Analytics code here.
-Go to http://www.google.com/analytics/ for more information. -->
-
-<!--==============================
-///// End Google Analytics /////
-============================== -->
 
 </body>
 </html>
