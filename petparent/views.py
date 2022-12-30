@@ -1,3 +1,4 @@
+from django.contrib.auth import logout
 from django.http import HttpResponse
 from django.shortcuts import render
 
@@ -31,3 +32,8 @@ def searchPage(request):
 
 def publishPage(request):
     return render(request, 'publish.html')
+
+
+def logoutUser(request):
+    logout(request)
+    return redirect('home')
