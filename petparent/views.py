@@ -21,4 +21,13 @@ def registerPage(request):
 
 def lostPasswordPage(request):
     # This is a lost password view
+    # This is a lost password view
     return render(request, 'lostpassword.html')
+
+
+def searchPage(request):
+    return render(request, 'search.html')
+
+
+def publishPage(request):
+    return render(request, 'publish.html')
