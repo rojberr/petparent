@@ -6,13 +6,13 @@
 <head>
 
     <!-- Title -->
-    <title>Register - Trainerhub</title>
+    <title>Register - Petparent</title>
 
     <!-- Meta -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="Responsive multipurpose trainer dashboard portal HTML website">
-    <meta name="keywords" content="HTML5, CSS3, Trainer, Responsive, Multipurpose, Sport"/>
+    <meta name="description" content="Responsive multipurpose pet hotel care adopt portal HTML website">
+    <meta name="keywords" content="HTML5, CSS3, Trainer, Responsive, Multipurpose, Pets"/>
     <meta name="author" content="drzymala.dev">
 
     {% include 'blocks/header-imports.html' %}
@@ -23,8 +23,6 @@
 <!-- ===========
 ///// Body /////
 ================
-* Use class "animsition" to enable page transition while page loads.
-* Use class "tt-boxed" to enable page boxed layout globally (affects all elements containing class "tt-wrap").
 -->
 <body id="body" class="animsition tt-boxed">
 
@@ -54,9 +52,7 @@
                             <!-- Begin register box content -->
                             <div class="register-box-content">
                                 <h2><i class="fa fa-plug"></i> Register an Account</h2>
-                                <p>Hendrerit elit eget sem pellentesque a. Velit elit lacinia mattis amet nunc. Fames
-                                    ipsum rhoncus. Natoque posuere nam commodo mattis orci. Numzen atzec tarum inopte
-                                    temper.</p>
+                                <p>Insert your data and create ypur PetParent profile!</p>
                                 <em class="small">Note: all fields are required!</em>
 
                                 <hr>
@@ -68,9 +64,7 @@
                                         <div class="col-lg-12">
                                             <div class="form-group">
                                                 <label for="email">Your email:</label>
-                                                {{ form.email }}
-{#                                                <input type="email" class="form-control" id="email" name="email"#}
-{#                                                       placeholder="Enter your email" required>#}
+                                                {% render_field form.email|add_required_class:"is-required" class+="form-control" %}
                                             </div>
                                         </div> <!-- /.col -->
                                     </div> <!-- /.row -->
@@ -89,7 +83,7 @@
                                         <div class="col-lg-12">
                                             <label for="gender">Your role:</label>
                                             <div class="form-group">
-                                                    {{ form.role }}
+                                                {{ form.role }}
                                             </div>
                                         </div> <!-- /.col -->
                                     </div> <!-- /.row -->
@@ -513,8 +507,8 @@
                                             <div class="form-group">
                                                 <label for="password">Choose your password:</label>
                                                 {{ form.password1 }}
-{#                                                <input type="password" class="form-control" id="password"#}
-                                                       name="password" placeholder="Choose password" required>
+                                                {#                                                <input type="password" class="form-control" id="password"#}
+                                                name="password" placeholder="Choose password" required>
                                             </div>
                                         </div> <!-- /.col -->
                                     </div> <!-- /.row -->
@@ -524,9 +518,9 @@
                                             <div class="form-group">
                                                 <label for="re-enter-password">Confirm password:</label>
                                                 {{ form.password2 }}
-{#                                                <input type="password" class="form-control" id="re-enter-password"#}
-                                                       name="re-enter-password" placeholder="Re-enter your password"
-                                                       required>
+                                                {#                                                <input type="password" class="form-control" id="re-enter-password"#}
+                                                name="re-enter-password" placeholder="Re-enter your password"
+                                                required>
                                             </div>
                                         </div> <!-- /.col -->
                                     </div> <!-- /.row -->
@@ -637,16 +631,16 @@
 ===================== -->
 {% include 'blocks/js-scripts.html' %}
 
-		<!--==============================
-		///// Begin Google Analytics /////
-		============================== -->
+<!--==============================
+///// Begin Google Analytics /////
+============================== -->
 
-		<!-- Paste your Google Analytics code here.
-		Go to http://www.google.com/analytics/ for more information. -->
+<!-- Paste your Google Analytics code here.
+Go to http://www.google.com/analytics/ for more information. -->
 
-		<!--==============================
-		///// End Google Analytics /////
-		============================== -->
+<!--==============================
+///// End Google Analytics /////
+============================== -->
 
 
 </body>

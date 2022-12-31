@@ -16,6 +16,7 @@ def loginPage(request):
 
 
 def registerPage(request):
+    registrationForm = CreateUserForm()
     context = {}
     return render(request, 'register.html', context)
 
