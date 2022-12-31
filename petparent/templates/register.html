@@ -52,7 +52,7 @@
 
                             <!-- Begin register box content -->
                             <div class="register-box-content">
-                                <h2><i class="fa fa-plug"></i> Register an Account</h2>
+                                <h2><i class="fa-solid fa-hippo"></i> Register an Account</h2>
                                 <p>Insert your data and create ypur PetParent profile!</p>
                                 <em class="small">Note: all fields are required!</em>
                                 <hr>
@@ -128,12 +128,14 @@
                                                 </div>
                                             {% endfor %}
                                         {% endfor %}
-                                        <a href="{% url 'login' %}"
-                                           class="register-box-link margin-top-15">Already have an account? Login!</a>
                                     </div>
-
                                     <button type="submit" class="btn btn-primary margin-top-15">Register</button>
                                 </form>
+                                <div>
+                                    <a href="{% url 'login' %}"
+                                       class="register-box-link margin-top-15">Already have an account? Sign in!<i
+                                            class="fa-solid fa-right-to-bracket"></i></a>
+                                </div>
                                 <!-- End register form -->
 
                             </div>
