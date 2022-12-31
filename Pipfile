@@ -5,6 +5,7 @@ name = "pypi"
 
 [packages]
 django = ">4.0.5"
+django-widget-tweaks = "*"
 
 [dev-packages]
 
