@@ -1,3 +1,4 @@
+{% load widget_tweaks %}
 {% load static %}
 <!DOCTYPE html>
 
@@ -6,7 +7,7 @@
 <head>
 
     <!-- Title -->
-    <title>LogIn - Petparent</title>
+    <title>Login - Petparent</title>
 
     <!-- Meta -->
     <meta charset="utf-8">
@@ -26,8 +27,12 @@
     -->
 <body id="body" class="animsition tt-boxed">
 
+<!-- =================
+//// Begin header ////
+======================
+-->
 {% include 'blocks/header.html' %}
-
+<!-- End header -->
 
 <!-- *************************************
 *********** Begin body content ***********
@@ -55,8 +60,14 @@
                                 <h3><i class="fas fa-unlock-alt"></i> Log In</h3>
 
                                 <!-- Begin login form -->
-                                <form id="login-form">
+                                <form id="login-form" method="POST">
+                                    {% csrf_token %}
                                     <div class="form-group">
+                                        {% for message in messages %}
+                                            <div class="alert  alert-warning" role="alert">
+                                                {{ message }}
+                                            </div>
+                                        {% endfor %}
                                         <label for="username">Username or Email Address:</label>
                                         <input type="text" class="form-control" id="username" name="username"
                                                placeholder="Enter your username" required>
@@ -74,8 +85,10 @@
                                         </label>
                                     </div>
 
-                                    <div><a href="page-lost-password-1.html" class="login-box-link margin-top-15">Lost
+                                    <div><a href="{% url 'lostpassword' %}" class="login-box-link margin-top-15">Lost
                                         your password?</a></div>
+                                    <div><a href="{% url 'register' %}"
+                                            class="login-box-link margin-top-15">Sign up!</a></div>
                                     <button type="submit" class="btn btn-primary btn-block margin-top-25">Log In
                                     </button>
                                 </form>
@@ -104,54 +117,17 @@
 
                 </div> <!-- /.col -->
 
-                <!-- Right column -->
-                <div class="col-sm-6">
-
-                    <!-- Begin register box
-                    ======================== -->
-                    <div class="register-box">
-                        <div class="register-box-inner">
-
-                            <!-- Begin register box content -->
-                            <div class="register-box-content">
-                                <h3><i class="fas fa-plug"></i> Don't have an account yet?</h3>
-                                <p class="margin-top-15">Donec et mauris tempus, interdum est ut, finibus nulla.
-                                    Suspendisse potenti. Nulla elementum ultricies massa vitae faucibus. Nullam blandit
-                                    lorem vel ligula pharetra vehicula. Quisque nec sollicitudin ipsum. Vestibulum
-                                    bibendum tortor ante, nec eleifend est varius vitae. Mauris enim massa, maximus ac
-                                    diam eget, convallis molestie risus. Vivamus bibendum duisets.</p>
-
-                                <!-- Begin register form -->
-                                <form id="register-form">
-                                    <div class="form-group margin-top-20">
-                                        <label for="username-2">Choose your username:</label>
-                                        <input type="text" class="form-control" id="username-2" name="username"
-                                               placeholder="Choose your username" required>
-                                    </div>
-                                    <div class="form-group margin-top-20">
-                                        <label for="password-2">Choose your password and continue:</label>
-                                        <input type="password" class="form-control" id="password-2" name="password"
-                                               placeholder="Choose your password" required>
-                                    </div>
-                                    <a href="page-register-1.html" type="submit" class="btn btn-primary margin-top-15">Continue
-                                        Registration</a>
-                                </form>
-                                <!-- End register form -->
-
-                            </div>
-                            <!-- End register box content -->
-
-                        </div> <!-- /.register-box-inner -->
-                    </div>
-                    <!-- End register box -->
-
-                </div> <!-- /.col -->
             </div> <!-- /.row -->
         </div> <!-- /.login-section-inner -->
     </section>
     <!-- End login section -->
 
+    <!-- ===========================
+   ///// Begin footer section /////
+   ================================
+   -->
     {% include 'blocks/footer.html' %}
+    <!-- End footer section -->
 
 </div>
 <!-- End body content -->
@@ -161,17 +137,6 @@
 ///// Scripts below /////
 ===================== -->
 {% include 'blocks/js-scripts.html' %}
-
-<!--==============================
-///// Begin Google Analytics /////
-============================== -->
-
-<!-- Paste your Google Analytics code here.
-Go to http://www.google.com/analytics/ for more information. -->
-
-<!--==============================
-///// End Google Analytics /////
-============================== -->
 
 
 </body>
