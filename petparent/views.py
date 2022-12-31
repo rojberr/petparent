@@ -2,6 +2,8 @@ from django.contrib.auth import logout
 from django.http import HttpResponse
 from django.shortcuts import render
 
+from petparent.forms import CreateUserForm
+
 
 def healthcheck(request):
     return HttpResponse(status=200)
@@ -17,7 +19,7 @@ def loginPage(request):
 
 def registerPage(request):
     registrationForm = CreateUserForm()
-    context = {}
+    context = {'form': registrationForm}
     return render(request, 'register.html', context)
 
 
