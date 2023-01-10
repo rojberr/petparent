@@ -1,6 +1,8 @@
 from django.contrib.auth.base_user import BaseUserManager
 from django.contrib.auth.models import AbstractUser
 from django.db import models
+from django.utils import timezone
+import datetime
 
 
 class CustomUserManager(BaseUserManager):
@@ -45,3 +47,31 @@ class User(AbstractUser):
 
     objects = CustomUserManager()
     role = models.CharField(max_length=50, choices=Role.choices, default=None)
+
+
+class Post(models.Model):
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    title = models.CharField(max_length=100, required=True)
+    date_posted = models.DateTimeField(default=timezone.now)
+    offer_description = models.TextField(required=True)
+
+    def __str__(self):
+        return f'{self.title} author: {self.author.username}'
+
+    class Meta:
+        ordering = ['-date_posted']
+
+
+class PetForAdoptionOffer(Post):  # animal shelter
+    animal_description = models.TextField(required=True)
+
+
+class RequestForPetSitter(Post):  # pet owner
+    date_from = models.DateField(default=timezone.now()+datetime.timedelta(days=2))
+    date_to = models.DateField(default=timezone.now()+datetime.timedelta(days=5))
+    animal_description = models.TextField(required=True)
+
+
+class HotelOffer(Post):
+    date_from = models.DateField(default=timezone.now)
+    date_to = models.DateField(default=timezone.now()+datetime.timedelta(days=5))
