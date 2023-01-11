@@ -51,9 +51,9 @@ class User(AbstractUser):
 
 class Post(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
-    title = models.CharField(max_length=100, required=True)
+    title = models.CharField(max_length=100, null=False, blank=False)
     date_posted = models.DateTimeField(default=timezone.now)
-    offer_description = models.TextField(required=True)
+    offer_description = models.TextField(null=False, blank=False)
 
     def __str__(self):
         return f'{self.title} author: {self.author.username}'
@@ -63,13 +63,13 @@ class Post(models.Model):
 
 
 class PetForAdoptionOffer(Post):  # animal shelter
-    animal_description = models.TextField(required=True)
+    animal_description = models.TextField(null=False, blank=False)
 
 
 class RequestForPetSitter(Post):  # pet owner
     date_from = models.DateField(default=timezone.now()+datetime.timedelta(days=2))
     date_to = models.DateField(default=timezone.now()+datetime.timedelta(days=5))
-    animal_description = models.TextField(required=True)
+    animal_description = models.TextField(null=False, blank=False)
 
 
 class HotelOffer(Post):
