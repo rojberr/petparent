@@ -1,7 +1,7 @@
 from django.contrib.auth.forms import UserCreationForm
 from django.forms import ModelForm
 
-from petparent.models import User, RequestForPetSitter, HotelOffer, PetForAdoptionOffer
+from petparent.models import User, PetCareAdvert, PetAdoptionAdvert
 
 
 class CreateUserForm(UserCreationForm):
@@ -11,22 +11,15 @@ class CreateUserForm(UserCreationForm):
         fields = ['username', 'email', 'password1', 'password2', 'role']
 
 
-class CreateOwnerAdvertForm(ModelForm):
+class CreatePeCareAdvertForm(ModelForm):
     class Meta:
-        model = RequestForPetSitter
-
-        fields = ['title', 'offer_description', 'date_from', 'date_to', 'animal_description']
-
-
-class CreateHotelAdvertForm(ModelForm):
-    class Meta:
-        model = HotelOffer
+        model = PetCareAdvert
 
         fields = ['title', 'offer_description', 'date_from', 'date_to']
 
 
 class CreateShelterAdvertForm(ModelForm):
     class Meta:
-        model = PetForAdoptionOffer
+        model = PetAdoptionAdvert
 
-        fields = ['title', 'offer_description', 'animal_description']
+        fields = ['title', 'offer_description']

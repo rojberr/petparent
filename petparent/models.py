@@ -62,16 +62,10 @@ class Post(models.Model):
         ordering = ['-date_posted']
 
 
-class PetForAdoptionOffer(Post):  # animal shelter
+class PetAdoptionAdvert(Post):  # animal shelter
     animal_description = models.TextField(null=False, blank=False)
 
 
-class RequestForPetSitter(Post):  # pet owner
+class PetCareAdvert(Post):  # pet owner + pet hostel
     date_from = models.DateField(default=timezone.now()+datetime.timedelta(days=2))
-    date_to = models.DateField(default=timezone.now()+datetime.timedelta(days=5))
-    animal_description = models.TextField(null=False, blank=False)
-
-
-class HotelOffer(Post):
-    date_from = models.DateField(default=timezone.now)
     date_to = models.DateField(default=timezone.now()+datetime.timedelta(days=5))
