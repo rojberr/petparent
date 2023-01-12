@@ -14,6 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.urls import path
+from django.contrib import admin
 
 from petparent import views
 
@@ -27,4 +28,5 @@ urlpatterns = [
     path('lostpassword/', views.lostPasswordPage, name='lostpassword'),
     path('petcare/', views.PetCareAdsView.as_view(), name='petcare-ads'),
     path('adoption/', views.ShelterAdsView.as_view(), name='adoption-ads'),
+    path('admin/', admin.site.urls),
 ]
