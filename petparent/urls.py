@@ -25,6 +25,6 @@ urlpatterns = [
     path('register/', views.registerPage, name='register'),
     path('logout/', views.logoutUser, name='logout'),
     path('lostpassword/', views.lostPasswordPage, name='lostpassword'),
-    path('search/', views.searchPage, name='search'),
-    path('publish/', views.publishPage, name='publish'),
+    path('petcare/', views.PetCareAdsView.as_view(), name='petcare-ads'),
+    path('adoption/', views.ShelterAdsView.as_view(), name='adoption-ads'),
 ]

@@ -2,9 +2,11 @@ from django.contrib import messages
 from django.contrib.auth import logout, authenticate, login
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
+from django.views.generic import ListView, DetailView, FormView
 
 from petparent.forms import CreateUserForm
-from petparent.models import User
+from petparent.models import User, PetCareAdvert, PetAdoptionAdvert
 
 
 def healthcheck(request):
@@ -26,7 +28,7 @@ def loginPage(request):
             user = authenticate(request, username=username, password=password)
             if user is not None:
                 login(request, user)
-                messages.info(request, 'Your logged in as ' + username)
+                messages.info(request, "You're logged in as " + username)
                 return redirect('home')
             else:
                 messages.info(request, 'Username OR password is incorrect')
@@ -65,8 +67,22 @@ def searchPage(request):
     return render(request, 'search.html')
 
 
+class PetCareAdsView(ListView):
+    model = PetCareAdvert
+    context_object_name = 'adverts'
+    template_name = 'search.html'
+
+
+class ShelterAdsView(ListView):
+    model = PetAdoptionAdvert
+    context_object_name = 'adverts'
+    template_name = 'search.html'
+
+
 def publishPage(request):
-    return render(request, 'publish.html')
+    form = None
+    context = {'form': form}
+    return render(request, 'publish.html', context)
 
 
 def logoutUser(request):
