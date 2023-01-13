@@ -2,7 +2,7 @@ from django.contrib.auth.base_user import BaseUserManager
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.utils import timezone
-import datetime
+from datetime import timedelta, date
 
 
 class CustomUserManager(BaseUserManager):
@@ -54,6 +54,8 @@ class Post(models.Model):
     title = models.CharField(max_length=100, null=False, blank=False)
     date_posted = models.DateTimeField(default=timezone.now)
     offer_description = models.TextField(null=False, blank=False)
+    contact_info = models.CharField(max_length=100, null=False, blank=False, default="+48-600-500-400")
+    location = models.CharField(max_length=100)
 
     def __str__(self):
         return f'{self.title} author: {self.author.username}'
@@ -67,5 +69,5 @@ class PetAdoptionAdvert(Post):  # animal shelter
 
 
 class PetCareAdvert(Post):  # pet owner + pet hostel
-    date_from = models.DateField(default=timezone.now()+datetime.timedelta(days=2))
-    date_to = models.DateField(default=timezone.now()+datetime.timedelta(days=5))
+    date_from = models.DateField(default=date.today()+timedelta(days=2))
+    date_to = models.DateField(default=date.today()+timedelta(days=5))
