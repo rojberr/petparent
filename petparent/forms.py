@@ -15,11 +15,11 @@ class CreatePeCareAdvertForm(ModelForm):
     class Meta:
         model = PetCareAdvert
 
-        fields = ['title', 'offer_description', 'date_from', 'date_to']
+        fields = ['title', 'offer_description', 'date_from', 'date_to', 'contact_info', 'location']
 
 
 class CreateShelterAdvertForm(ModelForm):
     class Meta:
         model = PetAdoptionAdvert
 
-        fields = ['title', 'offer_description']
+        fields = ['title', 'offer_description', 'contact_info', 'location']
