@@ -4,7 +4,6 @@ services:
 
   web:
     build: .
-    command: python manage.py runserver --settings=petparent.settings.development 0.0.0.0:8000
     volumes:
       - .:/code
     ports:

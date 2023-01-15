@@ -79,6 +79,19 @@ class ShelterAdsView(ListView):
     template_name = 'search.html'
 
 
+class PetCareAdDetailView(DetailView):
+    model = PetCareAdvert
+    context_object_name = 'advert'
+    template_name = 'petcare_detail.html'
+
+
+class ShelterAdDetailView(DetailView):
+    model = PetAdoptionAdvert
+    context_object_name = 'advert'
+    template_name = 'adoption_detail.html'
+
+
+@login_required()
 def publishPage(request):
     form = None
     context = {'form': form}

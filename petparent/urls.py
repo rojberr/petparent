@@ -15,8 +15,11 @@ Including another URLconf
 """
 from django.urls import path
 from django.contrib import admin
-
+from django.conf import settings
+from django.conf.urls.static import static
 from petparent import views
+
+from petparent.settings import basic, development
 
 urlpatterns = [
     path('healthcheck/', views.healthcheck),
@@ -28,5 +31,10 @@ urlpatterns = [
     path('lostpassword/', views.lostPasswordPage, name='lostpassword'),
     path('petcare/', views.PetCareAdsView.as_view(), name='petcare-ads'),
     path('adoption/', views.ShelterAdsView.as_view(), name='adoption-ads'),
+    path('petcare/<int:pk>', views.PetCareAdDetailView.as_view(), name='petcare-detail'),
+    path('adoption/<int:pk>', views.ShelterAdDetailView.as_view(), name='adoption-detail'),
     path('admin/', admin.site.urls),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
