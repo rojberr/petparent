@@ -52,8 +52,8 @@
                 <div class="col-sm-12 margin-bottom-30">
 
                     {% for advert in adverts %}
-                        <span style="font-weight: 700">{{ advert.title }}</span>  |
-                        <small>{{ advert.author.username }}</small>  
+                        <a href="{% url 'adoption-detail' advert.pk %}"><span style="font-weight: 700">{{ advert.title }}</span></a>  |
+                        <small>{{ advert.author.username }}</small>
                         <small>{{ advert.date_posted|date:"d M Y, P" }}</small> <br>
                         <p>{{ advert.offer_description|truncatewords:20 }}</p> <br>
                     {% endfor %}
