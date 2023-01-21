@@ -1,0 +1,88 @@
+{% load widget_tweaks %}
+{% load static %}
+{% load crispy_forms_tags %}
+<!DOCTYPE html>
+
+
+<html lang="en">
+<head>
+
+    <!-- Title -->
+    <title>Publish Advertisement - Petparent</title>
+
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Responsive multipurpose pet hotel care adopt portal HTML website">
+    <meta name="keywords" content="HTML5, CSS3, Trainer, Responsive, Multipurpose, Pets"/>
+    <meta name="author" content="drzymala.dev">
+
+    {% include 'blocks/header-imports.html' %}
+
+</head>
+
+
+<!-- ===========
+///// Body /////
+================
+    -->
+<body id="body" class="animsition tt-boxed">
+
+<!-- =================
+//// Begin header ////
+======================
+-->
+{% include 'blocks/header.html' %}
+<!-- End header -->
+
+<!-- *************************************
+*********** Begin body content ***********
+************************************** -->
+<div id="body-content">
+
+
+    <!-- ==========================
+    ///// Begin publishing section /////
+    =========================== -->
+    <section id="login-section">
+        <div class="login-section-inner tt-wrap max-width-1000">
+            <div class="row">
+
+                <!-- Left column -->
+                <div class="col-sm-12 margin-bottom-30">
+
+                    <!-- Begin publishing box
+                    ===================== -->
+                    <div class="login-box">
+                        <span style="font-weight: 700">{{ advert.title }}</span> | <small>{{ advert.author.username }}</small> <br>
+                        <small>{{ advert.date_posted|date:"d M Y, P" }}</small> <br>
+                        <p>{{ advert.offer_description }}</p> <br>
+                        <button>Reply to advert</button>
+                    </div>
+                    <!-- End publishing box -->
+
+                </div> <!-- /.col -->
+
+            </div> <!-- /.row -->
+        </div> <!-- /.login-section-inner -->
+    </section>
+    <!-- End publishing section -->
+
+    <!-- ===========================
+   ///// Begin footer section /////
+   ================================
+   -->
+    {% include 'blocks/footer.html' %}
+    <!-- End footer section -->
+
+</div>
+<!-- End body content -->
+
+
+<!-- ====================
+///// Scripts below /////
+===================== -->
+{% include 'blocks/js-scripts.html' %}
+
+</body>
+</html>
