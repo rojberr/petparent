@@ -22,4 +22,4 @@ class CreateShelterAdvertForm(ModelForm):
     class Meta:
         model = PetAdoptionAdvert
 
-        fields = ['title', 'offer_description', 'contact_info', 'location']
+        fields = ['title', 'offer_description', 'animal_description', 'contact_info', 'location', 'photo']
