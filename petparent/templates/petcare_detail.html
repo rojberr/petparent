@@ -8,7 +8,7 @@
 <head>
 
     <!-- Title -->
-    <title>Publish Advertisement - Petparent</title>
+    <title>Adoption Advertisement - Petparent</title>
 
     <!-- Meta -->
     <meta charset="utf-8">
@@ -54,10 +54,28 @@
                     <!-- Begin publishing box
                     ===================== -->
                     <div class="login-box">
-                        <span style="font-weight: 700">{{ advert.title }}</span> | <small>{{ advert.author.username }}</small> <br>
-                        <small>{{ advert.date_posted|date:"d M Y, P" }}</small> <br>
-                        <p>{{ advert.offer_description }}</p> <br>
-                        <button>Reply to advert</button>
+                        <div style="display: flex; flex-direction: row; justify-content: space-between; padding-bottom: 15px; border-bottom: 1px solid lightgrey">
+                            <div>
+                                <span style="font-size: 24px; font-weight: 700">{{ advert.title }}</span> | <small> Author: {{ advert.author.username }}</small> <br>
+                                <small>{{ advert.date_posted|date:"d M Y, P" }}</small>
+                            </div>
+                            <a href="{% url 'petcare-ads' %}" class="btn btn-primary margin-top-5 margin-right-10">Reply to advert</a>
+                        </div>
+                        <div class="offer-detail" style="margin-top: 25px">
+                            <div style="display: flex; flex-direction: column; align-items: center">
+                                <div style="width: 100%; margin-bottom: 15px">
+                                    <strong>Contact information: </strong></br>
+                                    <div style="display: flex; flex-direction: row; justify-content: flex-start">
+                                        <p style="margin-right: 40px">Tel.: </br> Adres: </p>
+                                        <p>{{ advert.contact_info }} </br> {{ advert.location }}</p>
+                                    </div>
+                                </div>
+
+                                <p style="width: 100%"><strong>Offer description: </strong></br>
+                                    {{ advert.offer_description }}
+                                </p>
+                            </div>
+                        </div>
                     </div>
                     <!-- End publishing box -->
 
