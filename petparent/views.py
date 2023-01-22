@@ -3,7 +3,9 @@ from django.contrib.auth import logout, authenticate, login
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from django.views.generic import ListView, DetailView, FormView
+from django.urls import reverse_lazy
+from django.views.generic import ListView, DetailView
+from django.views.generic import CreateView, UpdateView, DeleteView
 
 from petparent.forms import CreateUserForm
 from petparent.models import User, PetCareAdvert, PetAdoptionAdvert
@@ -59,24 +61,19 @@ def registerPage(request):
 
 def lostPasswordPage(request):
     # This is a lost password view
-    # This is a lost password view
     return render(request, 'lostpassword.html')
-
-
-def searchPage(request):
-    return render(request, 'search.html')
 
 
 class PetCareAdsView(ListView):
     model = PetCareAdvert
     context_object_name = 'adverts'
-    template_name = 'search.html'
+    template_name = 'petcare_ads.html'
 
 
 class ShelterAdsView(ListView):
     model = PetAdoptionAdvert
     context_object_name = 'adverts'
-    template_name = 'search.html'
+    template_name = 'adoption_ads.html'
 
 
 class PetCareAdDetailView(DetailView):
@@ -91,11 +88,27 @@ class ShelterAdDetailView(DetailView):
     template_name = 'adoption_detail.html'
 
 
+class AdoptionAdCreate(CreateView):
+    model = PetAdoptionAdvert
+    fields = ['title', 'offer_description', 'animal_description', 'photo', 'contact_info', 'location']
+    template_name = 'create_ad.html'
+
+
+class AdoptionAdUpdate(UpdateView):
+    model = PetAdoptionAdvert
+    fields = ['title', 'offer_description', 'animal_description', 'photo', 'contact_info', 'location']
+
+
+class AdoptionAdDelete(DeleteView):
+    model = PetCareAdvert
+    success_url = reverse_lazy('adoption-ads')
+
+
 @login_required()
 def publishPage(request):
     form = None
     context = {'form': form}
-    return render(request, 'publish.html', context)
+    return render(request, 'petcare_ads.html', context)
 
 
 def logoutUser(request):

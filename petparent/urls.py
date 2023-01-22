@@ -19,7 +19,6 @@ from django.conf import settings
 from django.conf.urls.static import static
 from petparent import views
 
-from petparent.settings import basic, development
 
 urlpatterns = [
     path('healthcheck/', views.healthcheck),
@@ -33,6 +32,7 @@ urlpatterns = [
     path('adoption/', views.ShelterAdsView.as_view(), name='adoption-ads'),
     path('petcare/<int:pk>', views.PetCareAdDetailView.as_view(), name='petcare-detail'),
     path('adoption/<int:pk>', views.ShelterAdDetailView.as_view(), name='adoption-detail'),
+    path('publish_ad/', views.AdoptionAdCreate.as_view(), name='publish-adoption-ad'),
     path('admin/', admin.site.urls),
 ]
 

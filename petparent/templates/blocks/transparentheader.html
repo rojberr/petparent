@@ -186,8 +186,20 @@
                             <a href="{% url 'adoption-ads' %}">Parent a pet</a>
                             <div class="tt-submenu">
                                 <ul class="tt-submenu-list">
-                                    <li><a href="{% url 'petcare-ads' %}">Search for a pet care</a></li>
-                                    <li><a href="{% url 'adoption-ads' %}">Publish pet to adopt</a></li>
+                                    {% if request.user.role == 'PET_HOSTEL' %}
+                                        <li><a href="{% url 'petcare-ads' %}">Search for a pet care</a></li>
+                                        <li><a href="{% url 'publish-petcare-ad' %}">Publish a pet care advert</a></li>
+                                    {% elif request.user.role == 'ANIMAL_SHELTER' %}
+                                        <li><a href="{% url 'adoption-ads' %}">Search for a pet to adopt</a></li>
+                                        <li><a href="{% url 'publish-adoption-ad' %}">Publish pet to adopt</a></li>
+                                    {% elif request.user.role == 'PET_OWNER' %}
+                                        <li><a href="{% url 'adoption-ads' %}">Search for a pet to adopt</a></li>
+                                        <li><a href="{% url 'petcare-ads' %}">Search for a pet care</a></li>
+                                        <li><a href="{% url 'publish-petcare-ad' %}">Publish a pet care advert</a></li>
+                                    {% else %}
+                                        <li><a href="{% url 'petcare-ads' %}">Search for a pet care</a></li>
+                                        <li><a href="{% url 'adoption-ads' %}">Search for a pet to adopt</a></li>
+                                    {% endif %}
                                 </ul> <!-- /.tt-submenu-list -->
                             </div> <!-- /.tt-submenu -->
                         </li>

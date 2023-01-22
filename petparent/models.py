@@ -68,7 +68,7 @@ class Post(models.Model):
 class PetAdoptionAdvert(Post):  # animal shelter
     animal_description = models.TextField(null=False, blank=False, help_text="Rasa, wiek, charakter, szczególne "
                                                                              "potrzeby, ulubiony sposób spędzania czasu")
-    photo = models.ImageField(name='pet_photo', default='hamster.jpeg', blank=True, upload_to='pet_photos/')
+    photo = models.ImageField(default='hamster.jpeg', blank=True, upload_to='pet_photos/')
 
     class Meta(Post.Meta):
         db_table = 'pet_adoption_advert'
