@@ -1,17 +1,20 @@
+{% load widget_tweaks %}
 {% load static %}
+{% load crispy_forms_tags %}
 <!DOCTYPE html>
 
 
 <html lang="en">
 <head>
+
     <!-- Title -->
-    <title>Home - Petparent</title>
+    <title>Publish Advertisement - Petparent</title>
 
     <!-- Meta -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="Responsive multipurpose pet hotel care adopt portal HTML website">
-    <meta name="keywords" content="HTML5, CSS3, Petparent, Responsive, Multipurpose, Pets"/>
+    <meta name="keywords" content="HTML5, CSS3, Trainer, Responsive, Multipurpose, Pets"/>
     <meta name="author" content="drzymala.dev">
 
     {% include 'blocks/header-imports.html' %}
@@ -22,10 +25,15 @@
 <!-- ===========
 ///// Body /////
 ================
--->
+    -->
 <body id="body" class="animsition tt-boxed">
 
-{% include 'blocks/transparentheader.html' %}
+<!-- =================
+//// Begin header ////
+======================
+-->
+{% include 'blocks/header.html' %}
+<!-- End header -->
 
 <!-- *************************************
 *********** Begin body content ***********
@@ -34,82 +42,36 @@
 
 
     <!-- ==========================
-    ///// Begin intro section /////
-    ===============================
-    -->
-    <section id="tt-intro" class="intro-full">
-        <div class="tt-intro-inner">
+    ///// Begin publishing section /////
+    =========================== -->
+    <section id="login-section">
+        <div class="login-section-inner tt-wrap max-width-1000">
+            <div class="row">
 
-            <!-- Begin YTPlayer (Youtube video background) -->
-            <div class="youtube-bg-wrap parallax-6 bg-dark"> <!-- Class "parallax-6" is for tt-intro only!!! -->
-                <div class="youtube-bg"
-                     style="background-image: url({% static 'img/pexels-helena-lopes-1378849.jpg' %}); background-position: 50% 50%;"
-                     data-property="{
-							videoURL: 'https://www.youtube.com/watch?v=DUhbsXnoshU',
-							containment: 'self',
-							quality: 'default',
-							startAt: 0,
-							stopAt: 0,
-							autoPlay: true,
-							loop: true,
-							mute: true,
-							showControls: false,
-							showYTLogo: false,
-							realfullscreen: true,
-							addRaster: false,
-							optimizeDisplay: true,
-							stopMovieOnBlur: true
-						}">
+                <!-- Left column -->
+                <div class="col-sm-12 margin-bottom-30">
+                   <form method="post" action="{% url 'publish-adoption-ad' %}">
+                       {% csrf_token %}
+                       {{ form|crispy }}
+                       <input type="submit" value="Save">
+                   </form>
+                </div> <!-- /.col -->
 
-                    <!-- Element cover
-                    ===================
-                    -->
-                    <div class="cover cover-opacity-4 cover-gradient-color"></div>
-
-                </div> <!-- /.youtube-bg -->
-            </div>
-            <!-- End YTPlayer -->
-
-            <!-- Begin intro caption
-            =========================
-            -->
-            <div class="intro-caption-wrap caption-animate intro-caption-lg bottom-left parallax-4">
-                <div class="intro-caption-holder">
-                    <div class="intro-caption center">
-                        <h1 class="intro-title">Join <br>PetParent</h1>
-                        <h2 class="intro-subtitle">What Are You waiting for? Join and profit from or offer the best
-                            animal care ever!</h2>
-
-                        <!-- Begin intro description
-                        ============================= -->
-                        <div class="intro-description">
-                            PetParent – is a complete pet care portal. It fits perfectly for people searching for pet
-                            care,
-                            people willing to offer one and pet hotels. Your pet will be amazed!
-                        </div>
-                        <!-- End intro-description -->
-
-                        <!-- Begin intro buttons -->
-                        <div class="intro-buttons">
-                            <a href="{% url 'register' %}" class="btn btn-primary margin-top-5 margin-right-10">Register
-                                Now!</a>
-                            <a href="{% url 'login' %}" class="btn btn-white-bordered margin-top-5">Login</a>
-                        </div>
-                        <!-- End intro buttons -->
-
-                    </div> <!-- /.intro-caption -->
-                </div> <!-- /.intro-caption-holder -->
-            </div>
-            <!-- End intro caption wrap -->
-
-        </div> <!-- /.tt-intro-inner -->
+            </div> <!-- /.row -->
+        </div> <!-- /.login-section-inner -->
     </section>
-    <!-- End intro section -->
+    <!-- End publishing section -->
 
+    <!-- ===========================
+   ///// Begin footer section /////
+   ================================
+   -->
     {% include 'blocks/footer.html' %}
+    <!-- End footer section -->
 
 </div>
 <!-- End body content -->
+
 
 <!-- ====================
 ///// Scripts below /////

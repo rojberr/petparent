@@ -91,7 +91,7 @@ class ShelterAdDetailView(DetailView):
 class AdoptionAdCreate(CreateView):
     model = PetAdoptionAdvert
     fields = ['title', 'offer_description', 'animal_description', 'photo', 'contact_info', 'location']
-    template_name = 'create_ad.html'
+    template_name = 'publish_adoption.html'
     # success_url = 'adoption-ads'
 
     def form_valid(self, form):
@@ -100,10 +100,12 @@ class AdoptionAdCreate(CreateView):
 
     def post(self, request, *args, **kwargs):
         form = self.get_form()
+        form = self.form_valid(form)
         if form.is_valid():
             return redirect('adoption-ads')
         else:
             return self.form_invalid(form)
+
 
 class AdoptionAdUpdate(UpdateView):
     model = PetAdoptionAdvert
@@ -118,12 +120,20 @@ class AdoptionAdDelete(DeleteView):
 class PetCareAdCreate(CreateView):
     model = PetCareAdvert
     fields = ['title', 'offer_description', 'date_from', 'date_to', 'contact_info', 'location']
-    template_name = 'create_ad.html'
+    template_name = 'publish_petcare.html'
     # success_url = 'petcare-ads'
 
     def form_valid(self, form):
         form.instance.author = self.request.user
         return super().form_valid(form)
+
+    def post(self, request, *args, **kwargs):
+        form = self.get_form()
+        form = self.form_valid(form)
+        if form.is_valid():
+            return redirect('petcare-ads')
+        else:
+            return self.form_invalid(form)
 
 
 class OwnAdoptionPostsList(ListView):
