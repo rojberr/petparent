@@ -92,7 +92,18 @@ class AdoptionAdCreate(CreateView):
     model = PetAdoptionAdvert
     fields = ['title', 'offer_description', 'animal_description', 'photo', 'contact_info', 'location']
     template_name = 'create_ad.html'
+    # success_url = 'adoption-ads'
 
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+
+    def post(self, request, *args, **kwargs):
+        form = self.get_form()
+        if form.is_valid():
+            return redirect('adoption-ads')
+        else:
+            return self.form_invalid(form)
 
 class AdoptionAdUpdate(UpdateView):
     model = PetAdoptionAdvert
@@ -102,6 +113,37 @@ class AdoptionAdUpdate(UpdateView):
 class AdoptionAdDelete(DeleteView):
     model = PetCareAdvert
     success_url = reverse_lazy('adoption-ads')
+
+
+class PetCareAdCreate(CreateView):
+    model = PetCareAdvert
+    fields = ['title', 'offer_description', 'date_from', 'date_to', 'contact_info', 'location']
+    template_name = 'create_ad.html'
+    # success_url = 'petcare-ads'
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+
+
+class OwnAdoptionPostsList(ListView):
+    model = PetAdoptionAdvert
+    context_object_name = 'adverts'
+    template_name = 'adoption_ads.html'
+
+    def get_queryset(self):
+        user = self.request.user
+        return self.model.objects.filter(author=user)
+
+
+class OwnPetCarePostsList(ListView):
+    model = PetCareAdvert
+    context_object_name = 'adverts'
+    template_name = 'petcare_ads.html'
+
+    def get_queryset(self):
+        user = self.request.user
+        return self.model.objects.filter(author=user)
 
 
 @login_required()
