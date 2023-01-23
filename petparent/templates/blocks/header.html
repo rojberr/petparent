@@ -184,22 +184,43 @@
                             <a href="{% url 'adoption-ads' %}">Parent a pet</a>
                             <div class="tt-submenu">
                                 <ul class="tt-submenu-list">
-                                    <li><a href="{% url 'petcare-ads' %}">Search for a pet care</a></li>
-                                    <li><a href="{% url 'adoption-ads' %}">Search for a pet to adopt</a></li>
+                                    {% if request.user.role == 'PET_HOSTEL' %}
+                                        <li><a href="{% url 'petcare-ads' %}">Search for a pet care</a></li>
+                                        <li><a href="{% url 'publish-petcare-ad' %}">Publish a pet care advert</a></li>
+                                    {% elif request.user.role == 'ANIMAL_SHELTER' %}
+                                        <li><a href="{% url 'adoption-ads' %}">Search for a pet to adopt</a></li>
+                                        <li><a href="{% url 'publish-adoption-ad' %}">Publish pet to adopt</a></li>
+                                    {% elif request.user.role == 'PET_OWNER' %}
+                                        <li><a href="{% url 'adoption-ads' %}">Search for a pet to adopt</a></li>
+                                        <li><a href="{% url 'petcare-ads' %}">Search for a pet care</a></li>
+                                        <li><a href="{% url 'publish-petcare-ad' %}">Publish a pet care advert</a></li>
+                                    {% else %}
+                                        <li><a href="{% url 'petcare-ads' %}">Search for a pet care</a></li>
+                                        <li><a href="{% url 'adoption-ads' %}">Search for a pet to adopt</a></li>
+                                    {% endif %}
                                 </ul> <!-- /.tt-submenu-list -->
                             </div> <!-- /.tt-submenu -->
                         </li>
                         <!-- End submenu (sub-master) -->
-
+                        <li class="tt-submenu-master">
+                            {% if request.user.role == 'ANIMAL_SHELTER' %}
+                                <a href='{% url 'own-adoption-posts' %}'>My posts</a>
+                            {% elif request.user.role == 'PET_OWNER' or request.user.role == 'PET_HOSTEL' %}
+                                <a href='{% url 'own-petcare-posts' %}'>My posts</a>
+                            {% endif %}
+                        </li>
                         <!-- Begin submenu (submenu master)
                         ==================================== -->
                         <li class="tt-submenu-wrap tt-submenu-master">
                             <a href=''>Profile</a>
                             <div class="tt-submenu">
                                 <ul class="tt-submenu-list">
-                                    <li><a href="{% url 'login' %}">Login</a></li>
-                                    <li><a href="{% url 'register' %}">Register</a></li>
-                                    <li><a href="{% url 'logout' %}">Logout</a></li>
+                                    {% if request.user.is_active %}
+                                        <li><a href="{% url 'logout' %}">Logout</a></li>
+                                    {% else %}
+                                        <li><a href="{% url 'login' %}">Login</a></li>
+                                        <li><a href="{% url 'register' %}">Register</a></li>
+                                    {% endif %}
                                 </ul> <!-- /.tt-submenu-list -->
                             </div> <!-- /.tt-submenu -->
                         </li>
