@@ -7,9 +7,8 @@ from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView
 from django.views.generic import CreateView, UpdateView, DeleteView
 
-from petparent.forms import CreateUserForm
+from petparent.forms import CreateUserForm, CreateShelterAdvertForm
 from petparent.models import User, PetCareAdvert, PetAdoptionAdvert
-
 
 def healthcheck(request):
     return HttpResponse(status=200)
@@ -90,21 +89,14 @@ class ShelterAdDetailView(DetailView):
 
 class AdoptionAdCreate(CreateView):
     model = PetAdoptionAdvert
-    fields = ['title', 'offer_description', 'animal_description', 'photo', 'contact_info', 'location']
+    form_class = CreateShelterAdvertForm
     template_name = 'publish_adoption.html'
-    # success_url = 'adoption-ads'
+    success_url = reverse_lazy('adoption-ads')
 
     def form_valid(self, form):
         form.instance.author = self.request.user
         return super().form_valid(form)
 
-    def post(self, request, *args, **kwargs):
-        form = self.get_form()
-        form = self.form_valid(form)
-        if form.is_valid():
-            return redirect('adoption-ads')
-        else:
-            return self.form_invalid(form)
 
 
 class AdoptionAdUpdate(UpdateView):
