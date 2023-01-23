@@ -97,16 +97,45 @@ class AdoptionAdCreate(CreateView):
         form.instance.author = self.request.user
         return super().form_valid(form)
 
+    def dispatch(self, request, *args, **kwargs):
+        if request.user != self.get_object().author:
+            return HttpResponseForbidden()
+        else:
+            obj = self.get_object()
+            obj.update()
+            return redirect(self.success_url)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["action_type"] = "create"
+        return context
 
 
 class AdoptionAdUpdate(UpdateView):
     model = PetAdoptionAdvert
-    fields = ['title', 'offer_description', 'animal_description', 'photo', 'contact_info', 'location']
+
+    form_class = CreateShelterAdvertForm
+    template_name = 'publish_adoption.html'
+    success_url = reverse_lazy('adoption-ads')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["action_type"] = "update"
+        return context
 
 
 class AdoptionAdDelete(DeleteView):
-    model = PetCareAdvert
+    model = PetAdoptionAdvert
     success_url = reverse_lazy('adoption-ads')
+
+    def dispatch(self, request, *args, **kwargs):
+
+        if request.user != self.get_object().author:
+            return HttpResponseForbidden()
+        else:
+            obj = self.get_object()
+            obj.delete()
+            return redirect(self.success_url)
 
 
 class PetCareAdCreate(CreateView):

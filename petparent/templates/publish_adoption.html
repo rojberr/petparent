@@ -50,7 +50,11 @@
 
                 <!-- Left column -->
                 <div class="col-sm-12 margin-bottom-30">
-                   <form method="post" action="{% url 'publish-adoption-ad' %}" enctype="multipart/form-data">
+                    {% if action_type == 'update' %}
+                        <form method="post" enctype="multipart/form-data">
+                    {% else %}
+                        <form method="post" action="{% url 'publish-adoption-ad' %}" enctype="multipart/form-data">
+                    {% endif %}
                        {% csrf_token %}
                        {{ form|crispy }}
                        <input type="submit" value="Save">
