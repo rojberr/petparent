@@ -94,10 +94,11 @@ class AdoptionAdCreate(CreateView):
     success_url = reverse_lazy('adoption-ads')
 
     def form_valid(self, form):
-        form.instance.author = self.request.user
+        if not hasattr(form.instance, "author"):
+            form.instance.author = self.request.user
         return super().form_valid(form)
 
-    def dispatch(self, request, *args, **kwargs):
+    def update(self, request, *args, **kwargs):
         if request.user != self.get_object().author:
             return HttpResponseForbidden()
         else:
@@ -145,10 +146,11 @@ class PetCareAdCreate(CreateView):
     success_url = reverse_lazy('petcare-ads')
 
     def form_valid(self, form):
-        form.instance.author = self.request.user
+        if not hasattr(form.instance, "author"):
+            form.instance.author = self.request.user
         return super().form_valid(form)
 
-    def dispatch(self, request, *args, **kwargs):
+    def update(self, request, *args, **kwargs):
         if request.user != self.get_object().author:
             return HttpResponseForbidden()
         else:
