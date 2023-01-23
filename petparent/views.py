@@ -1,13 +1,13 @@
 from django.contrib import messages
 from django.contrib.auth import logout, authenticate, login
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseForbidden
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView
 from django.views.generic import CreateView, UpdateView, DeleteView
 
-from petparent.forms import CreateUserForm, CreateShelterAdvertForm
+from petparent.forms import CreateUserForm, CreateShelterAdvertForm, CreatePetCareAdvertForm
 from petparent.models import User, PetCareAdvert, PetAdoptionAdvert
 
 def healthcheck(request):
@@ -111,21 +111,53 @@ class AdoptionAdDelete(DeleteView):
 
 class PetCareAdCreate(CreateView):
     model = PetCareAdvert
-    fields = ['title', 'offer_description', 'date_from', 'date_to', 'contact_info', 'location']
+    form_class = CreatePetCareAdvertForm
     template_name = 'publish_petcare.html'
-    # success_url = 'petcare-ads'
+    success_url = reverse_lazy('petcare-ads')
 
     def form_valid(self, form):
         form.instance.author = self.request.user
         return super().form_valid(form)
 
-    def post(self, request, *args, **kwargs):
-        form = self.get_form()
-        form = self.form_valid(form)
-        if form.is_valid():
-            return redirect('petcare-ads')
+    def dispatch(self, request, *args, **kwargs):
+        if request.user != self.get_object().author:
+            return HttpResponseForbidden()
         else:
-            return self.form_invalid(form)
+            obj = self.get_object()
+            obj.update()
+            return redirect(self.success_url)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["action_type"] = "create"
+        return context
+
+
+class PetCareAdUpdate(UpdateView):
+    model = PetCareAdvert
+
+    form_class = CreatePetCareAdvertForm
+    template_name = 'publish_petcare.html'
+    success_url = reverse_lazy('petcare-ads')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["action_type"] = "update"
+        return context
+
+
+class PetCareAdDelete(DeleteView):
+    model = PetCareAdvert
+    success_url = reverse_lazy('petcare-ads')
+
+    def dispatch(self, request, *args, **kwargs):
+
+        if request.user != self.get_object().author:
+            return HttpResponseForbidden()
+        else:
+            obj = self.get_object()
+            obj.delete()
+            return redirect(self.success_url)
 
 
 class OwnAdoptionPostsList(ListView):

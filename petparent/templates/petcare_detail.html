@@ -59,7 +59,12 @@
                                 <span style="font-size: 24px; font-weight: 700">{{ advert.title }}</span> | <small> Author: {{ advert.author.username }}</small> <br>
                                 <small>{{ advert.date_posted|date:"d M Y, P" }}</small>
                             </div>
-                            <a href="{% url 'petcare-ads' %}" class="btn btn-primary margin-top-5 margin-right-10">Reply to advert</a>
+                            {% if advert.author == user %}
+                                <a href="{% url 'update-petcare-ad' advert.pk %}" class="btn btn-secondary margin-top-5">Update</a>
+                                <a href="{% url 'delete-petcare-ad' advert.pk %}" class="btn btn-secondary margin-top-5">Delete</a>
+                            {% else %}
+                                <a href="{% url 'petcare-ads' %}" class="btn btn-primary margin-top-5 margin-right-10">Reply to advert</a>
+                            {% endif %}
                         </div>
                         <div class="offer-detail" style="margin-top: 25px">
                             <div style="display: flex; flex-direction: column; align-items: center">

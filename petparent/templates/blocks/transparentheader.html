@@ -206,7 +206,7 @@
                         <!-- End submenu (sub-master) -->
                         <li class="tt-submenu-master">
                             {% if request.user.role == 'ANIMAL_SHELTER' %}
-                                <a href='{% url 'own-adoption-posts' %}'>My posts</a>
+                                <a href='{% url 'own-adoption-posts' %}'>My postss</a>
                             {% elif request.user.role == 'PET_OWNER' or request.user.role == 'PET_HOSTEL' %}
                                 <a href='{% url 'own-petcare-posts' %}'>My posts</a>
                             {% endif %}
