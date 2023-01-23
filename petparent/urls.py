@@ -30,12 +30,16 @@ urlpatterns = [
     path('lostpassword/', views.lostPasswordPage, name='lostpassword'),
     path('petcare/', views.PetCareAdsView.as_view(), name='petcare-ads'),
     path('adoption/', views.ShelterAdsView.as_view(), name='adoption-ads'),
-    path('my_posts/', views.OwnAdoptionPostsList.as_view(), name='own-adoption-posts'),
-    path('my_posts/', views.OwnPetCarePostsList.as_view(), name='own-petcare-posts'),
+    path('my_adoption_posts/', views.OwnAdoptionPostsList.as_view(), name='own-adoption-posts'),
+    path('my_petcare_posts/', views.OwnPetCarePostsList.as_view(), name='own-petcare-posts'),
     path('petcare/<int:pk>', views.PetCareAdDetailView.as_view(), name='petcare-detail'),
     path('adoption/<int:pk>', views.ShelterAdDetailView.as_view(), name='adoption-detail'),
     path('publish_adopt_ad/', views.AdoptionAdCreate.as_view(), name='publish-adoption-ad'),
+    path('update_adopt_ad/<int:pk>', views.AdoptionAdUpdate.as_view(), name='update-adoption-ad'),
+    path('delete_adopt_ad/<int:pk>', views.AdoptionAdDelete.as_view(), name='delete-adoption-ad'),
     path('publish_pc_ad/', views.PetCareAdCreate.as_view(), name='publish-petcare-ad'),
+    path('update_pc_ad/<int:pk>', views.PetCareAdUpdate.as_view(), name='update-petcare-ad'),
+    path('delete_pc_ad/<int:pk>', views.PetCareAdDelete.as_view(), name='delete-petcare-ad'),
     path('admin/', admin.site.urls),
 ]
 

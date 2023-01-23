@@ -11,7 +11,7 @@ class CreateUserForm(UserCreationForm):
         fields = ['username', 'email', 'password1', 'password2', 'role']
 
 
-class CreatePeCareAdvertForm(ModelForm):
+class CreatePetCareAdvertForm(ModelForm):
     class Meta:
         model = PetCareAdvert
 

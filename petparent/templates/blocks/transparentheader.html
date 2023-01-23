@@ -218,9 +218,12 @@
                             <a href=''>Profile</a>
                             <div class="tt-submenu">
                                 <ul class="tt-submenu-list">
-                                    <li><a href="{% url 'login' %}">Login</a></li>
-                                    <li><a href="{% url 'register' %}">Register</a></li>
-                                    <li><a href="{% url 'logout' %}">Logout</a></li>
+                                   {% if request.user.is_active %}
+                                        <li><a href="{% url 'logout' %}">Logout</a></li>
+                                    {% else %}
+                                        <li><a href="{% url 'login' %}">Login</a></li>
+                                        <li><a href="{% url 'register' %}">Register</a></li>
+                                    {% endif %}
                                 </ul> <!-- /.tt-submenu-list -->
                             </div> <!-- /.tt-submenu -->
                         </li>
